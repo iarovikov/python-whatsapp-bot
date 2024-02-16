@@ -72,6 +72,7 @@ def process_text_for_whatsapp(text):
 def process_whatsapp_message(body):
     wa_id = body["entry"][0]["changes"][0]["value"]["contacts"][0]["wa_id"]
     name = body["entry"][0]["changes"][0]["value"]["contacts"][0]["profile"]["name"]
+    recipient_phone_number = wa_id  # or any logic to choose the phone number
 
     message = body["entry"][0]["changes"][0]["value"]["messages"][0]
     message_body = message["text"]["body"]
@@ -83,8 +84,9 @@ def process_whatsapp_message(body):
     # response = generate_response(message_body, wa_id, name)
     # response = process_text_for_whatsapp(response)
 
-    data = get_text_message_input(current_app.config["RECIPIENT_WAID"], response)
-    send_message(data)
+    # Pass the recipient phone number to get_text_message_input and send_message
+    data = get_text_message_input(recipient_phone_number, response)
+    send_message(data, recipient_phone_number)
 
 
 def is_valid_whatsapp_message(body):
