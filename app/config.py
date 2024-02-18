@@ -18,7 +18,8 @@ def load_configurations(app):
 
 def configure_logging():
     logging.basicConfig(
+        filename="std.log",
+        filemode="a",
         level=logging.INFO,
         format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-        stream=sys.stdout,
     )
