@@ -86,7 +86,7 @@ def process_whatsapp_message(body):
 
     # Pass the recipient phone number to get_text_message_input and send_message
     data = get_text_message_input(recipient_phone_number, response)
-    send_message(data, recipient_phone_number)
+    send_message(data)
 
 
 def is_valid_whatsapp_message(body):
